@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+# FER202 · EX20–22
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Một project Create React App, một `package.json`, chứa đúng các bài EX20 đến EX22. Chủ đề: React Router.
 
-## Available Scripts
+## Chạy project
 
-In the project directory, you can run:
+Mở terminal trong thư mục `ex20to22`:
 
-### `npm start`
+```powershell
+npm install
+npm start
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Mở [http://localhost:3002](http://localhost:3002). Trang đầu tự mở EX20; chọn bài khác từ menu. Cổng được đặt trong `.env` để cả 3 project có thể chạy cùng lúc.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Khởi tạo bằng Create React App
 
-### `npm test`
+Các lệnh sau dùng để tạo project mới từ thư mục cha. Với project đã có sẵn, dùng các lệnh chạy ở trên.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```powershell
+npx create-react-app ex20to22 --use-npm
+cd ex20to22
+npm install bootstrap react-router-dom@6 reactstrap
+npm start
+```
 
-### `npm run build`
+Cách khởi tạo theo [Create React App](https://create-react-app.dev/docs/getting-started/). `ex12to15` tiếp tục project CRA đã có; hai project còn lại được khởi tạo bằng lệnh `npx create-react-app`.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Các bài trong package
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+| Bài  | Nội dung                    | URL                                          |
+| ---- | --------------------------- | -------------------------------------------- |
+| EX20 | Decoupling Routes           | [Mở bài](http://localhost:3002/exercises/20) |
+| EX21 | Resource IDs in Routes      | [Mở bài](http://localhost:3002/exercises/21) |
+| EX22 | Optional Parameters và Link | [Mở bài](http://localhost:3002/exercises/22) |
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Cấu trúc
 
-### `npm run eject`
+```text
+src/
+  App.js                  # Điều phối các bài trong package
+  app/                    # Menu, catalog và khung bài học
+  exercises/
+    exercise-20/        # Component và README của EX20
+    exercise-21/        # Component và README của EX21
+    exercise-22/        # Component và README của EX22
+  shared/                 # Thành phần hoặc dữ liệu dùng trong package
+public/images/            # Ảnh cục bộ
+docs/REVIEW_GUIDE.md       # Kịch bản demo
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Mỗi bài có component riêng, state và cleanup riêng. Chuyển bài sẽ reset state của bài trước. Project tự chứa source, ảnh và dependency, có thể sao chép riêng để chạy.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Kiểm tra
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```powershell
+npm run build
+npm run test:ci
+npm run format:check
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+EX20 tách cấu hình trong `routes.js`. EX21 đọc ID bằng `useParams` và xử lý ID không tồn tại. EX22 dùng Reactstrap, `Link`, `profile/:userId?` và query string. Chỉ có một `BrowserRouter` trong `src/index.js`.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Đọc [hướng dẫn trình bày](docs/REVIEW_GUIDE.md) và README trong từng thư mục bài tập để đối chiếu đề Word và slide.
